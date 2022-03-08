@@ -1,0 +1,232 @@
+$font-family-roboto: "Roboto", sans-serif;
+$color-grey-dark: #3e3e3e;
+$color-blue-light: #f4f8f9;
+$color-shadow: #ccc;
+$breakpoint: 700px;
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: $color-blue-light;
+    color: $color-grey-dark;
+    font-family: $font-family-roboto;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-roboto;
+}
+
+.app-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media (min-width: $breakpoint) {
+        font-size: 2rem;
+    }
+}
+
+.app-container {
+    padding: 20px 10px 10px;
+
+    @media (min-width: $breakpoint) {
+        margin: 25px auto;
+        max-width: 900px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+.app-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.app-options-sort {
+    appearance: none;
+    background-color: #fff;
+    box-shadow: 0 2px 2px $color-shadow;
+    background-image: url("../images/icon-sort-solid.svg");
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
+    background-size: 10px;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-family: $font-family-roboto;
+    font-size: 0.85rem;
+    margin-right: 20px;
+    padding: 10px 40px 10px 10px;
+}
+
+.app-options-reload {
+    background-color: $color-grey-dark;
+    background-image: url("../images/icon-shuffle-solid.svg");
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: $font-family-roboto;
+    font-size: 0.85rem;
+    padding: 10px 40px 10px 15px;
+    transition: background-color 0.25s;
+
+    &:hover,
+    &.app-options-reloading {
+        background-color: lighten($color-grey-dark, 15%);
+    }
+
+    &.app-options-reloading {
+        background-image: none;
+        cursor: not-allowed;
+        padding-right: 15px;
+    }
+}
+
+.story {
+    background-color: #fff;
+    box-shadow: 0 2px 2px $color-shadow;
+    display: flex;
+
+    & + .story {
+        border-top: 1px solid darken($color-blue-light, 5%);
+        margin-top: 15px;
+    }
+}
+
+.story-pre {
+    display: none;
+
+    & .story-thumb {
+        height: auto;
+        max-width: 100%;
+    }
+
+    @media (min-width: $breakpoint) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex: 0 0 50px;
+        justify-content: center;
+        padding: 15px;
+    }
+}
+
+.story-body {
+    border-right: 2px solid lighten($color-grey-dark, 65%);
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 15px;
+
+    @media (min-width: $breakpoint) {
+        border-left: 2px solid lighten($color-grey-dark, 65%);
+    }
+}
+
+.story-meta {
+    color: #585858;
+    display: flex;
+    font-size: 0.8rem;
+    flex-direction: column;
+    margin-top: auto;
+    padding-top: 10px;
+    xjustify-content: space-between;
+
+    & a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    @media (min-width: $breakpoint) {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.story-meta-separator {
+    display: none;
+
+    @media (min-width: $breakpoint) {
+        display: inline;
+        margin-left: 5px;
+        margin-right: 5px;
+        order: -1;
+    }
+}
+
+.story-title {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0;
+    word-break: break-word;
+
+    & a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+.story-url {
+    align-self: flex-start;
+    color: #585858;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    word-break: break-word;
+}
+
+.story-karma-icon {
+    margin-right: 2px;
+    max-width: 12px;
+}
+
+.story-timestamp {
+    margin-top: 5px;
+
+    @media (min-width: $breakpoint) {
+        margin-top: 0;
+        order: -2;
+    }
+}
+
+.story-post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 85px;
+
+    & .story-thumb {
+        margin-bottom: 10px;
+
+        @media (min-width: $breakpoint) {
+            display: none;
+        }
+    }
+}
+
+.story-score-icon {
+    margin-bottom: 5px;
+    max-width: 20px;
+}
+
+.story-score-rating {
+    font-weight: bold;
+}
