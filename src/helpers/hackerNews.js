@@ -1,15 +1,22 @@
 import { takeRandom } from './utils.js';
 import storyThumbnail from '../images/story-thumb.png';
 
-export function getTopStories(maxStories, orderBy = 'scoreDesc') {
+export function getTopStories(maxStories) {
 
     return fetch('https://hacker-news.firebaseio.com/v0/topstories.json')
         .then(res => res.json())
-        .then(storyIds => Promise.all(takeRandom(storyIds, maxStories).map((storyId) => getStory(storyId))))
+        .then(storyIds => {
+
+            // Select random X story ids from the API endpoint response.
+            // Then take each story ID and fetch the story from the appropriate API endpoint.
+            return Promise.all(takeRandom(storyIds, maxStories).map((storyId) => getStory(storyId)))
+
+        })
         .then(stories => {
 
             const uniqueAuthors = [];
 
+            // Loop through the stories retrieved from the API and build a list of unique authors.
             for (let i = 0; i < stories.length; i++) {
 
                 const author = stories[i].by;
@@ -22,10 +29,13 @@ export function getTopStories(maxStories, orderBy = 'scoreDesc') {
 
             return new Promise((resolve, reject) => {
 
+                // Call the API to retrieve the data for each author.
                 Promise.all(uniqueAuthors.map(author => getUser(author)))
                     .then(authors => {
 
+                        // Merge the story and the author together into a single object.
                         const storiesWithAuthor = stories.map(story => {
+
                             const author = authors.find(author => author.id === story.by);
 
                             return {
@@ -41,6 +51,7 @@ export function getTopStories(maxStories, orderBy = 'scoreDesc') {
                                     karma: author.karma,
                                 }
                             }
+
                         });
 
                         resolve(storiesWithAuthor);

@@ -12,7 +12,8 @@ export function useLatestStories(maxStories) {
         // Flag that we're loading stories.
         setStatus('loading');
 
-        getTopStories(maxStories, sortOrder)
+        // Get the top stories and then update the state with them.
+        getTopStories(maxStories)
             .then(stories => {
                 setStories(stories);
                 setStatus('complete');
