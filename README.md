@@ -15,4 +15,7 @@ When you're ready to host the project files, you'll want to generate an optimise
 
 `npm run build`
 
+### Troubleshooting
+In case you're unable to generate a build using the provided npm scripts, I've included a pre-compiled version of the app in the `dist` directory.
+
 \* The app has been built using NodeJS v14.16.0
