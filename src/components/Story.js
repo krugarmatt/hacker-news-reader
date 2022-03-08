@@ -27,7 +27,7 @@ export function Story({ story }) {
                 <div className="story-meta">
                     <a href={`https://news.ycombinator.com/user?id=${story.author.id}`} target="_blank">{story.author.id} (<img src={StarIcon} className="story-karma-icon" alt="Star icon" width="12px" />{story.author.karma})</a>
                     <span className="story-meta-separator">|</span>
-                    <time className="story-timestamp">Posted: {new Date(story.timestamp * 1000).toLocaleDateString()}</time>
+                    <span className="story-timestamp">Posted: <time dateTime={story.dateTime.toISOString()}> {story.dateTime.toLocaleDateString()}</time></span>
                 </div>
 
             </div>

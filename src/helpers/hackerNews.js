@@ -33,6 +33,7 @@ export function getTopStories(maxStories, orderBy = 'scoreDesc') {
                                 title: story.title,
                                 url: story.url,
                                 timestamp: story.time,
+                                dateTime: new Date(story.time * 1000),
                                 score: story.score,
                                 thumbnail: storyThumbnail,
                                 author: {
