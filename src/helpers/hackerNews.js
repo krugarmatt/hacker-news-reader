@@ -41,7 +41,7 @@ export function getTopStories(maxStories) {
                             return {
                                 id: story.id,
                                 title: story.title,
-                                url: story.url,
+                                url: story.url ? story.url : `https://news.ycombinator.com/item?id=${story.id}`,
                                 timestamp: story.time,
                                 dateTime: new Date(story.time * 1000),
                                 score: story.score,

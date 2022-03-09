@@ -3,15 +3,6 @@ import StarIcon from '../images/icon-star-solid.svg';
 import ThumbIcon from '../images/icon-thumb-up-regular.svg';
 
 export function Story({ story }) {
-
-    let heading = story.title;
-    let link = null;
-
-    if (story.url) {
-        heading = <a href={story.url} target="_blank">{story.title}</a>;
-        link = <a href={story.url} target="_blank" className="story-url">{story.url}</a>;
-    }
-
     return (
         <article className="story">
 
@@ -21,8 +12,8 @@ export function Story({ story }) {
 
             <div className="story-body">
 
-                <h2 className="story-title">{heading}</h2>
-                {link}
+                <h2 className="story-title"><a href={story.url} target="_blank">{story.title}</a></h2>
+                <a href={story.url} target="_blank" className="story-url">{story.url}</a>
 
                 <div className="story-meta">
                     <a href={`https://news.ycombinator.com/user?id=${story.author.id}`} target="_blank">{story.author.id} (<img src={StarIcon} className="story-karma-icon" alt="Star icon" width="12" />{story.author.karma})</a>
