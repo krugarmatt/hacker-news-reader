@@ -1,8 +1,12 @@
 import React from 'react';
-import { Story } from './Story.js';
-import { useLatestStories } from '../hooks/stories.js';
+import { Story } from './Story';
+import { useLatestStories } from '../hooks/stories';
 
-export function App({ maxStories }) {
+interface AppProps {
+    maxStories: number
+}
+
+export function App({ maxStories }: AppProps) {
 
     const [stories, loadStories, sortOrder, changeSortOrder, status] = useLatestStories(maxStories);
 

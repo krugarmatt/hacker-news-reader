@@ -1,10 +1,10 @@
-export function takeRandom(items, max) {
+export function takeRandom(items: any[], max: number) {
     
-    const selectedItems = [];
+    const selectedItems: any[] = [];
 
     // If there are less items than the maximum, just use all the items.
     if (items.length <= max) {
-        selectedItems = items;
+        selectedItems.concat(items);
     } else {
 
         while (selectedItems.length < max) {

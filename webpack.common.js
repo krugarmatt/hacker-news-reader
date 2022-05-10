@@ -2,24 +2,17 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
         filename: 'app.js',
         path: path.join(__dirname, 'dist'),
         clean: true
     },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js"]
+    },
     module: {
         rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }
-            },
             {
                 test: /\.scss$/,
                 exclude: /(node_modules|bower_components)/,
@@ -30,8 +23,21 @@ module.exports = {
                 type: 'asset/resource',
             },
             {
-              test: /\.(woff|woff2|eot|ttf|otf)$/i,
-              type: 'asset/resource',
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /(node_modules|bower_components)/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env', '@babel/preset-react']
+                        }
+                    },
+                    "ts-loader"
+                ]
             },
         ],
     },

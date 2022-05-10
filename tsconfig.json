@@ -1,0 +1,14 @@
+{
+    "include": ["./src/**/*.tsx", "./src/types/*.d.ts"],
+    "exclude": ["node_modules"],
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": false,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "module": "es2020",
+        "moduleResolution": "classic",
+        "noEmit": false,
+        "sourceMap": true,
+    },
+}
